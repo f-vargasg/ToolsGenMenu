@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Definicion del xml para armar el menu -->
+<menuDef> 
+  <menu id ="menu0" label="Menu1"> 
+    <menu id="menu1" label = "Menu11"> 
+      <item id="item2" label= "item2" invoker=""/> 
+      <item id="item3" label= "item3" invoker=""/>
+    </menu> 
+    <item id="item4" label= "item4" invoker=""/> 
+    <item id="item5" label= "item5" invoker=""/>
+    <item id="item6" label= "item6" invoker=""/>
+    <item id="item7" label= "item7" invoker=""/>
+    </menu> 
+ </menuDef> 
