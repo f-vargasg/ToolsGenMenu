@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Utilities;
 
-namespace WinXmlToSqlInvoker.DataLayer
+namespace WinGenCallSps.DataLayer
 {
     public class OraMetaDataDL
     {

@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsGenMenu", "ToolsGenMenu\ToolsGenMenu.csproj", "{1E4391BB-1BAA-4B3A-BCFD-3746387509E5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinConsCatalogoSabNet", "WinConsCatalogoSabNet\WinConsCatalogoSabNet.csproj", "{7DE8DE11-4057-460F-878F-68BE3B3F4874}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "..\CleanDirectory\Utilities\Utilities.csproj", "{01EEF488-28F5-46FD-9BCC-870975EF305B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinGenCallSps", "WinGenCallSps\WinGenCallSps.csproj", "{9F809633-0C6D-49FB-933A-A7569F78C164}"
 EndProject
@@ -35,8 +33,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppBL", "AppBL\AppBL.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDL", "AppDL\AppDL.csproj", "{4C2E62C5-77AE-4934-A35D-E6C144FF70DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiUtilities", "..\CleanDirectory\UiUtilities\UiUtilities.csproj", "{83243208-BD40-4755-A037-39E73A78DF87}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinManteCatalogoServ", "WinManteCatalogoServ\WinManteCatalogoServ.csproj", "{1EBA2386-133A-4C9E-B775-0B39F3977B83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUtiles", "WinUtiles\WinUtiles.csproj", "{CC7385B1-356F-48B0-836A-3B8DCD469981}"
@@ -51,11 +47,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinCmpFondos", "WinCmpFondo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinScarvDbObjects", "WinScarvDbObjects\WinScarvDbObjects.csproj", "{54B92171-AB02-499A-BC3B-399D2581B0E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinTestGenGridSabNet", "WinTestGenGridSabNet\WinTestGenGridSabNet.csproj", "{9F44E4CE-D71A-4A0B-9951-FAE32CADF8E1}"
+EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -69,10 +63,6 @@ Global
 		{7DE8DE11-4057-460F-878F-68BE3B3F4874}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DE8DE11-4057-460F-878F-68BE3B3F4874}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DE8DE11-4057-460F-878F-68BE3B3F4874}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01EEF488-28F5-46FD-9BCC-870975EF305B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01EEF488-28F5-46FD-9BCC-870975EF305B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01EEF488-28F5-46FD-9BCC-870975EF305B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01EEF488-28F5-46FD-9BCC-870975EF305B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9F809633-0C6D-49FB-933A-A7569F78C164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9F809633-0C6D-49FB-933A-A7569F78C164}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F809633-0C6D-49FB-933A-A7569F78C164}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -125,10 +115,6 @@ Global
 		{4C2E62C5-77AE-4934-A35D-E6C144FF70DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C2E62C5-77AE-4934-A35D-E6C144FF70DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C2E62C5-77AE-4934-A35D-E6C144FF70DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83243208-BD40-4755-A037-39E73A78DF87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83243208-BD40-4755-A037-39E73A78DF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83243208-BD40-4755-A037-39E73A78DF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83243208-BD40-4755-A037-39E73A78DF87}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1EBA2386-133A-4C9E-B775-0B39F3977B83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1EBA2386-133A-4C9E-B775-0B39F3977B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EBA2386-133A-4C9E-B775-0B39F3977B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -157,8 +143,19 @@ Global
 		{54B92171-AB02-499A-BC3B-399D2581B0E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54B92171-AB02-499A-BC3B-399D2581B0E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54B92171-AB02-499A-BC3B-399D2581B0E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F44E4CE-D71A-4A0B-9951-FAE32CADF8E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F44E4CE-D71A-4A0B-9951-FAE32CADF8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F44E4CE-D71A-4A0B-9951-FAE32CADF8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F44E4CE-D71A-4A0B-9951-FAE32CADF8E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EBFCB83B-B579-4312-879D-AEC769D22DAE}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal
