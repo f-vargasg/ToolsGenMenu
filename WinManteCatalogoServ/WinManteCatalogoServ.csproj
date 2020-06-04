@@ -60,6 +60,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmSeachCatServ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSeachCatServ.Designer.cs">
+      <DependentUpon>FrmSeachCatServ.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListCatalog.cs">
       <SubType>Form</SubType>
     </Compile>

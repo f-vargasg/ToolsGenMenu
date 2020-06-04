@@ -100,5 +100,16 @@ namespace WinManteCatalogoServ
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void butSeach_Click(object sender, EventArgs e)
+        {
+            using (FrmSeachCatServ frm = new FrmSeachCatServ())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
     }
 }

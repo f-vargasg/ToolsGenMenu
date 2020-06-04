@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.butSeach = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,13 +48,25 @@
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.buscarToolStripMenuItem.Text = "Buscar";
             // 
+            // butSeach
+            // 
+            this.butSeach.Location = new System.Drawing.Point(265, 0);
+            this.butSeach.Name = "butSeach";
+            this.butSeach.Size = new System.Drawing.Size(85, 27);
+            this.butSeach.TabIndex = 5;
+            this.butSeach.Text = "Search";
+            this.butSeach.UseVisualStyleBackColor = true;
+            this.butSeach.Click += new System.EventHandler(this.butSeach_Click);
+            // 
             // FrmListCatalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.ClientSize = new System.Drawing.Size(1243, 606);
+            this.Controls.Add(this.butSeach);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FrmListCatalog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Controls.SetChildIndex(this.butSeach, 0);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -64,5 +77,6 @@
 
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
+        private System.Windows.Forms.Button butSeach;
     }
 }
