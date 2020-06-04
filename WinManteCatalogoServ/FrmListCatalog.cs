@@ -103,13 +103,31 @@ namespace WinManteCatalogoServ
 
         private void butSeach_Click(object sender, EventArgs e)
         {
-            using (FrmSeachCatServ frm = new FrmSeachCatServ())
+            if (dgrData.Rows.Count > 0)
             {
-                if (frm.ShowDialog() == DialogResult.OK)
+                using (FrmSeachCatServ frm = new FrmSeachCatServ())
                 {
+                    frm.StartPosition = FormStartPosition.CenterParent;
+                    frm.DgrData = dgrData;
 
+                    DialogResult res = frm.ShowDialog();
+                    /*
+                    if (res == DialogResult.OK)
+                    {
+                        MessageBox.Show("Ok");
+                    }
+                    else if (res == DialogResult.Cancel)
+                    {
+                        MessageBox.Show("Cancel");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ninguno");
+                    }
+                    */
                 }
             }
+            
         }
     }
 }
