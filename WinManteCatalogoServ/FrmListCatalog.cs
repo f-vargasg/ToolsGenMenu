@@ -69,7 +69,7 @@ namespace WinManteCatalogoServ
                 //frm.CatSrvBE.CodServicioN = Convert.ToInt32(dgrData.SelectedCells[0].Value);
                 frm.CatSrvBE.CodServicioN = Convert.ToInt32(dgrData.CurrentRow.Cells[0].Value);
                 frm.ShowDialog();
-                RefreshTlStrpBut_Click(sender, e);
+                // RefreshTlStrpBut_Click(sender, e);
             }
             catch (Exception ex)
             {
