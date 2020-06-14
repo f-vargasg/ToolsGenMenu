@@ -41,7 +41,7 @@
             // butOk
             // 
             this.butOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.butOk.Location = new System.Drawing.Point(781, 84);
+            this.butOk.Location = new System.Drawing.Point(681, 84);
             this.butOk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butOk.Name = "butOk";
             this.butOk.Size = new System.Drawing.Size(104, 31);
@@ -53,7 +53,7 @@
             // butCancel
             // 
             this.butCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.butCancel.Location = new System.Drawing.Point(669, 84);
+            this.butCancel.Location = new System.Drawing.Point(569, 84);
             this.butCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butCancel.Name = "butCancel";
             this.butCancel.Size = new System.Drawing.Size(104, 31);
@@ -61,6 +61,7 @@
             this.butCancel.Text = "Cancel";
             this.butCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.butCancel.UseVisualStyleBackColor = true;
+            this.butCancel.Visible = false;
             this.butCancel.Click += new System.EventHandler(this.butCancel_Click);
             // 
             // butClearFilters
@@ -72,6 +73,7 @@
             this.butClearFilters.TabIndex = 9;
             this.butClearFilters.Text = "Show All";
             this.butClearFilters.UseVisualStyleBackColor = true;
+            this.butClearFilters.Visible = false;
             // 
             // butSearch
             // 

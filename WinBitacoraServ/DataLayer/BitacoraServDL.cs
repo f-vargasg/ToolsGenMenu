@@ -13,7 +13,16 @@ namespace WinBitacoraServ.DataLayer
 
         public BitacoraServDL ()
         {
-            this.conn = ConnGl.Instance.Conn;
+            try
+            {
+                this.conn = ConnGl.Instance.Conn;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
 

@@ -39,13 +39,14 @@ namespace WinBitacoraServ
 
         private void tstButFind_Click(object sender, EventArgs e)
         {
-            BitacoraServDL bitServDL = new BitacoraServDL();
+            BitacoraServDL bitServDL ;
 
             // Set cursor as hourglass
             Cursor.Current = Cursors.WaitCursor;
 
             try
             {
+                bitServDL = new BitacoraServDL();
                 string scrap = string.Empty;
                 string cond = string.Empty;
 

@@ -29,7 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincBitacora));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtpFecFin = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpFecInic = new System.Windows.Forms.DateTimePicker();
             this.chkPorCodUsuario = new System.Windows.Forms.CheckBox();
             this.chkPorCodServ = new System.Windows.Forms.CheckBox();
             this.txtCodUsuario = new System.Windows.Forms.TextBox();
@@ -39,17 +44,16 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tstButExit = new System.Windows.Forms.ToolStripButton();
             this.tstButFind = new System.Windows.Forms.ToolStripButton();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.txtDes_invocador = new System.Windows.Forms.TextBox();
             this.dgrData = new System.Windows.Forms.DataGridView();
-            this.dtpFecInic = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dtpFecFin = new System.Windows.Forms.DateTimePicker();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -68,8 +72,46 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1257, 124);
+            this.panel1.Size = new System.Drawing.Size(1245, 114);
             this.panel1.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(306, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 20);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Fec.Fin:";
+            // 
+            // dtpFecFin
+            // 
+            this.dtpFecFin.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFecFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFecFin.Location = new System.Drawing.Point(378, 76);
+            this.dtpFecFin.Name = "dtpFecFin";
+            this.dtpFecFin.Size = new System.Drawing.Size(165, 26);
+            this.dtpFecFin.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(15, 81);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Fec. Inic:";
+            // 
+            // dtpFecInic
+            // 
+            this.dtpFecInic.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFecInic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFecInic.Location = new System.Drawing.Point(135, 76);
+            this.dtpFecInic.Name = "dtpFecInic";
+            this.dtpFecInic.Size = new System.Drawing.Size(165, 26);
+            this.dtpFecInic.TabIndex = 6;
             // 
             // chkPorCodUsuario
             // 
@@ -161,87 +203,62 @@
             this.tstButFind.Text = "Buscar";
             this.tstButFind.Click += new System.EventHandler(this.tstButFind_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.txtDes_invocador);
-            this.panel2.Controls.Add(this.dgrData);
-            this.panel2.Location = new System.Drawing.Point(0, 180);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1245, 438);
-            this.panel2.TabIndex = 6;
-            // 
             // txtDes_invocador
             // 
-            this.txtDes_invocador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDes_invocador.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDes_invocador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes_invocador.Location = new System.Drawing.Point(3, 155);
+            this.txtDes_invocador.Location = new System.Drawing.Point(0, 0);
             this.txtDes_invocador.Multiline = true;
             this.txtDes_invocador.Name = "txtDes_invocador";
-            this.txtDes_invocador.Size = new System.Drawing.Size(1239, 280);
+            this.txtDes_invocador.Size = new System.Drawing.Size(1245, 264);
             this.txtDes_invocador.TabIndex = 2;
             // 
             // dgrData
             // 
-            this.dgrData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgrData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrData.Location = new System.Drawing.Point(3, 4);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgrData.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgrData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgrData.Location = new System.Drawing.Point(0, 0);
             this.dgrData.Name = "dgrData";
-            this.dgrData.Size = new System.Drawing.Size(1239, 145);
+            this.dgrData.Size = new System.Drawing.Size(1245, 204);
             this.dgrData.TabIndex = 0;
             this.dgrData.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrData_RowEnter);
             // 
-            // dtpFecInic
+            // splitContainer1
             // 
-            this.dtpFecInic.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecInic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecInic.Location = new System.Drawing.Point(135, 76);
-            this.dtpFecInic.Name = "dtpFecInic";
-            this.dtpFecInic.Size = new System.Drawing.Size(165, 26);
-            this.dtpFecInic.TabIndex = 6;
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(0, 148);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // label3
+            // splitContainer1.Panel1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 81);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 20);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Fec. Inic:";
+            this.splitContainer1.Panel1.Controls.Add(this.dgrData);
             // 
-            // label4
+            // splitContainer1.Panel2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(306, 81);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 20);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Fec.Fin:";
-            // 
-            // dtpFecFin
-            // 
-            this.dtpFecFin.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecFin.Location = new System.Drawing.Point(378, 76);
-            this.dtpFecFin.Name = "dtpFecFin";
-            this.dtpFecFin.Size = new System.Drawing.Size(165, 26);
-            this.dtpFecFin.TabIndex = 8;
+            this.splitContainer1.Panel2.Controls.Add(this.txtDes_invocador);
+            this.splitContainer1.Size = new System.Drawing.Size(1245, 472);
+            this.splitContainer1.SplitterDistance = 204;
+            this.splitContainer1.TabIndex = 7;
             // 
             // FrmPrincBitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1245, 616);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrincBitacora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -250,9 +267,12 @@
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrData)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,7 +286,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tstButExit;
         private System.Windows.Forms.ToolStripButton tstButFind;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtDes_invocador;
         private System.Windows.Forms.DataGridView dgrData;
         private System.Windows.Forms.CheckBox chkPorCodServ;
@@ -277,6 +296,7 @@
         private System.Windows.Forms.DateTimePicker dtpFecFin;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtpFecInic;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 
