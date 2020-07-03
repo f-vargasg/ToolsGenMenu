@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinScarvDbObjects", "WinSca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinTestGenGridSabNet", "WinTestGenGridSabNet\WinTestGenGridSabNet.csproj", "{9F44E4CE-D71A-4A0B-9951-FAE32CADF8E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateOraclePackage", "GenerateOraclePackage\GenerateOraclePackage.csproj", "{0F4A6FE5-F53A-46BE-877A-8944FE18CCBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -147,6 +149,10 @@ Global
 		{9F44E4CE-D71A-4A0B-9951-FAE32CADF8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F44E4CE-D71A-4A0B-9951-FAE32CADF8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F44E4CE-D71A-4A0B-9951-FAE32CADF8E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F4A6FE5-F53A-46BE-877A-8944FE18CCBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F4A6FE5-F53A-46BE-877A-8944FE18CCBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F4A6FE5-F53A-46BE-877A-8944FE18CCBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F4A6FE5-F53A-46BE-877A-8944FE18CCBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

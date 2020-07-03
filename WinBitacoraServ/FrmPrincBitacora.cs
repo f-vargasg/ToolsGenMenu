@@ -1,4 +1,5 @@
-﻿using Oracle.DataAccess.Client;
+﻿using AppDL;
+using Oracle.DataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Utilities;
-using WinBitacoraServ.DataLayer;
 using WinConsCatalogoSabNet;
 
 namespace WinBitacoraServ
