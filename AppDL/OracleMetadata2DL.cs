@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,9 @@ namespace AppDL
                    " WHERE A.NOM_SERVICIO = " + MyStringUtils.entreComas(pServiceName);
 
 
-            using (IDbConnection connection = database.CreateOpenConnection())
+            using (DbConnection connection = database.CreateOpenConnection())
             {
-                using (IDbCommand command = database.CreateCommand(wSql, connection))
+                using (DbCommand command = database.CreateCommand(wSql, connection))
                 {
                     using (IDataReader reader = command.ExecuteReader())
                     {
@@ -45,17 +46,17 @@ namespace AppDL
             try
             {
 
-                using (IDbConnection connection = database.CreateOpenConnection())
+                using (DbConnection connection = database.CreateOpenConnection())
                 {
-                    using (IDbCommand command = database.CreateStoredProcCommand("pckTest.OBTVALOR3", connection))
+                    using (DbCommand command = database.CreateStoredProcCommand("pckTest.OBTVALOR3", connection))
                     {
                         // add parameters
 
 
                         //PPACKAGENAME
 
-                        IDataParameter param1;
-                        param1 = database.CreateParameter("Return_Value", string.Empty, 1000);
+                        DbParameter param1;
+                        param1 = database.CreateParameter("Return_Value", DbType.String, ParameterDirection.ReturnValue);
                         param1.Direction = ParameterDirection.ReturnValue;
                         //param1.DbType = DbType.String;
                         command.Parameters.Add(param1);
@@ -89,9 +90,9 @@ namespace AppDL
             try
             {
 
-                using (IDbConnection connection = database.CreateOpenConnection())
+                using (DbConnection connection = database.CreateOpenConnection())
                 {
-                    using (IDbCommand command = database.CreateStoredProcCommand("pckTest.CargarDatos", connection))
+                    using (DbCommand command = database.CreateStoredProcCommand("pckTest.CargarDatos", connection))
                     {
                         // add parameters
 
@@ -134,9 +135,9 @@ namespace AppDL
                 packageName = scrap[0];
                 methodName = scrap[1];
 
-                using (IDbConnection connection = database.CreateOpenConnection())
+                using (DbConnection connection = database.CreateOpenConnection())
                 {
-                    using (IDbCommand command = database.CreateStoredProcCommand("GE_PAMBCSHARPGEN.GETCALLSERVICE", connection))
+                    using (DbCommand command = database.CreateStoredProcCommand("GE_PAMBCSHARPGEN.GETCALLSERVICE", connection))
                     {
                         // add parameters
 
@@ -273,9 +274,9 @@ namespace AppDL
             sql = sql.Replace(LexFmtDate, scrap);
 
 
-            using (IDbConnection connection = database.CreateOpenConnection())
+            using (DbConnection connection = database.CreateOpenConnection())
             {
-                using (IDbCommand command = database.CreateCommand(sql, connection))
+                using (DbCommand command = database.CreateCommand(sql, connection))
                 {
                     using (IDataReader reader = command.ExecuteReader())
                     {

@@ -19,7 +19,7 @@ namespace ToolsGenMenu
 {
     public partial class FrmPrincMenu : Form
     {
-        TreeNode curNode;
+       // TreeNode curNode;
         long idTreeNode;
         string xmlContents;
         int idLastVisited;

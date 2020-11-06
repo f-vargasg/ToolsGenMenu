@@ -80,10 +80,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MyUtilities\DatabaseUtil\DatabaseUtil.csproj">
-      <Project>{9443cda4-6429-4d6d-880f-9dea0d5cf234}</Project>
-      <Name>DatabaseUtil</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AppDL\AppDL.csproj">
       <Project>{4c2e62c5-77ae-4934-a35d-e6c144ff70da}</Project>
       <Name>AppDL</Name>

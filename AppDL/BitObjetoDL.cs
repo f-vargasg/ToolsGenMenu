@@ -1,52 +1,72 @@
-﻿using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using Utilities;
 
 namespace AppDL
 {
-    public class BitObjetoDL
+    public class BitObjetoDL : DataWorker
     {
-        OracleConnection conn;
-
-        public BitObjetoDL()
-        {
-            this.conn = ConnGl.Instance.Conn;
-        }
-
+        
         public decimal ObtenerCodRegistro ()
         {
-            List<OracleParameter> lstParams = new List<OracleParameter>();
+            decimal res = 0;
+            using (DbConnection connection = database.CreateOpenConnection())
+            {
+                using (DbCommand command = database.CreateStoredProcCommand("GE_PAMBCOMMON.CONSECUTIVO", connection))
 
-            decimal wcod_registro = (Decimal)(OracleDecimal)(MyOracleUtils.execOracleSf2("GE_PAMBCOMMON.CONSECUTIVO", lstParams, OracleDbType.Decimal, this.conn));
-            return wcod_registro;
+                {
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        res = decimal.Parse(command.Parameters["return_value"].Value.ToString());
+                        // string scrap = string.Format("Resultado de la suma {0}", res);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
+                }
+            }
+            return res;
         }
-
+        
         public void Registrar(decimal pCodAccionRegN,
                               string pNomTabla,
                               decimal pCodRegistroN,
                               string pCodUsuarioV)
         {
-            OracleParameter param;
-            List<OracleParameter> lstParams = new List<OracleParameter>();
+            int res = 0;
+            using (DbConnection connection = database.CreateOpenConnection())
+            {
+                using (DbCommand command = database.CreateStoredProcCommand("GE_PAMBBITOBJETO.registrar", connection))
 
-            param = MyOracleUtils.makeParam("pcod_accionreg_n", pCodAccionRegN, OracleDbType.Decimal, ParameterDirection.Input);
-            lstParams.Add(param);
+                {
+                    try
+                    {
+                        DbParameter param = database.CreateParameter("pcod_accionreg_n", DbType.Decimal, pCodAccionRegN);
+                        command.Parameters.Add(param);
+                        param = database.CreateParameter("pdes_tabla", DbType.String, pNomTabla);
+                        command.Parameters.Add(param);
+                        param = database.CreateParameter("pcod_registro_n", DbType.Decimal, pCodRegistroN);
+                        command.Parameters.Add(param);
+                        param = database.CreateParameter("pcod_usuario_v", DbType.String, pCodUsuarioV);
+                        command.Parameters.Add(param);
+                        command.ExecuteNonQuery();
+                        // string scrap = string.Format("Resultado de la suma {0}", res);
+                    }
+                    catch (Exception)
+                    {
 
-            param = MyOracleUtils.makeParam("pdes_tabla", pNomTabla, OracleDbType.Varchar2, ParameterDirection.Input);
-            lstParams.Add(param);
+                        throw;
+                    }
 
-            param = MyOracleUtils.makeParam("pcod_registro_n", pCodRegistroN, OracleDbType.Decimal, ParameterDirection.Input);
-            lstParams.Add(param);
-
-            param = MyOracleUtils.makeParam("pcod_usuario_v", pCodUsuarioV, OracleDbType.Varchar2, ParameterDirection.Input);
-            lstParams.Add(param);
-
-            MyOracleUtils.execOracleSp2("GE_PAMBBITOBJETO.registrar", lstParams, this.conn);
+                }
+            }
         }
     }
 }

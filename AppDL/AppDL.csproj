@@ -33,8 +33,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DatabaseUtil">
-      <HintPath>..\..\MyUtilities\DatabaseUtil\bin\Debug\DatabaseUtil.dll</HintPath>
+    <Reference Include="DbConnFactory">
+      <HintPath>..\..\DbConnectionFactory2\DbConnFactory\bin\Release\DbConnFactory.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.DataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>

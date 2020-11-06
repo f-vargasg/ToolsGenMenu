@@ -24,14 +24,28 @@ namespace WinManteCatalogoServ
         private void InitMyComponents()
         {
             this.Text = this.Name;
+            try
+            {
+                cmbSearchType.Items.Clear();
+                List<string> lst = new List<string>();
+                foreach (DataGridViewColumn item in DgrData.Columns)
+                {
+                    lst.Add(item.Name);
+                }
+                string[] ColNameList = lst.ToArray();
+//                DataTable dt = (DataTable)DgrData.DataSource;
+//                string[] ColNameList = dt.Columns.OfType<DataColumn>().Select(x => x.ColumnName).ToArray();
+                cmbSearchType.Items.AddRange(ColNameList); // Adding Column Names in ComoBox List    
+                                                           // show datatable
+                                                           //ds.Tables.Add(dt);
+                if (cmbSearchType.Items.Count > 0) cmbSearchType.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                this.Dispose();
+            }
 
-            cmbSearchType.Items.Clear();
-            DataTable dt = (DataTable)DgrData.DataSource;
-            string[] ColNameList = dt.Columns.OfType<DataColumn>().Select(x => x.ColumnName).ToArray();
-            cmbSearchType.Items.AddRange(ColNameList); // Adding Column Names in ComoBox List    
-                                                       // show datatable
-                                                       //ds.Tables.Add(dt);
-            if (cmbSearchType.Items.Count > 0) cmbSearchType.SelectedIndex = 0;
         }
 
         private void FrmSeachCatServ_Load(object sender, EventArgs e)
@@ -62,16 +76,34 @@ namespace WinManteCatalogoServ
 
         private void butSearch_Click(object sender, EventArgs e)
         {
-            try
+            string searchValue = txtSearchBox.Text;
+            int columnIndex;
+            int rowIndex = 0;
+
+            if (DgrData.Rows.Count > 0)
             {
-                ((DataTable)this.DgrData.DataSource).DefaultView.RowFilter =
-                    string.Format("" + cmbSearchType.Text + " like '%{0}%'", txtSearchBox.Text.Trim().Replace("'", "''"));
-                // lblRowCount.Text = (dgrData.Rows.Count - 1).ToString();
+                columnIndex = DgrData.Rows[0].Cells[cmbSearchType.Text].ColumnIndex;
+                DgrData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                try
+                {
+                    foreach (DataGridViewRow row in DgrData.Rows)
+                    {
+                        if (row.Cells[columnIndex].Value.ToString().Equals(searchValue))
+                        {
+                            row.Selected = true;
+                            DgrData.CurrentCell = DgrData[columnIndex, rowIndex];
+                            break;
+                        }
+                        ++rowIndex;
+                    }
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
+
         }
     }
 }

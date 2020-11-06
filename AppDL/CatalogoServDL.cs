@@ -4,13 +4,14 @@ using Oracle.DataAccess.Types;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using Utilities;
 
 namespace AppDL
 {
-    public class CatalogoServDL
+    public class CatalogoServDL : DataWorker
     {
         OracleConnection conn;
         BitObjetoDL bitObjDL;
@@ -110,13 +111,51 @@ namespace AppDL
             bitObjDL.Registrar(3, "GE_AMBCATALOGO", codRegistroN, usuario);
         }
 
-        public DataSet GetList()
+        public List<CatalogoServBE> GetList()
         {
+            /*
             DataSet res = null;
             string sql = "Select a.* " + Environment.NewLine +
                          "from  Ge_ambcatalogo a " + Environment.NewLine +
                          "Order by a.cod_servicio_n desc";
             res = MyOracleUtils.executeSqlStmDs(sql, this.conn);
+            return res;
+            */
+            string sql = "Select a.* " + Environment.NewLine +
+                         "from  Ge_ambcatalogo a " + Environment.NewLine +
+                         "Order by a.cod_servicio_n desc";
+            List<CatalogoServBE> res = new List<CatalogoServBE>();
+
+            using (DbConnection connection = database.CreateOpenConnection())
+            {
+                using (DbCommand command = database.CreateCommand(sql, connection))
+                {
+                    using (IDataReader dr = command.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            CatalogoServBE catSrvBe = new CatalogoServBE();
+                            catSrvBe.CodServicioN = Convert.ToInt32(dr["COD_SERVICIO_N"]);
+                            catSrvBe.CodTipretornoN = Convert.ToInt32(dr["COD_TIPRETORNO_N"]);
+                            catSrvBe.CodObjpropN = Convert.ToInt32(dr["COD_OBJPROP_N"]);
+                            catSrvBe.CodTipservicioN = Convert.ToInt32(dr["COD_TIPSERVICIO_N"]);
+                            catSrvBe.CodAccservN = Convert.ToInt32(dr["COD_ACCSERV_N"]);
+                            catSrvBe.NomServicio = Convert.ToString(dr ["NOM_SERVICIO"]);
+                            catSrvBe.IndAtomservV = Convert.ToString(dr["IND_ATOMSERV_V"]);
+                            catSrvBe.CodModuloN = Convert.ToInt32(dr["COD_MODULO_N"]);
+                            catSrvBe.DesServicio = Convert.ToString(dr ["DES_SERVICIO"]);
+                            catSrvBe.NumCache = Convert.ToInt32(dr["NUM_CACHE"]);
+                            catSrvBe.DesInvocador = null;
+                            catSrvBe.CodRegistroN = Convert.ToDecimal(dr["COD_REGISTRO_N"]);
+                            catSrvBe.CodEstadoN = Convert.ToInt32(dr["COD_ESTADO_N"]);
+                            catSrvBe.IndLogueo = Convert.ToInt32(dr["IND_LOGUEO"]);
+                            catSrvBe.IndPublico = Convert.ToInt32(dr["IND_PUBLICO"]);
+                            catSrvBe.DesEsquema = null;
+                            res.Add(catSrvBe);
+                        }
+                    }
+                }
+            }
             return res;
         }
 
