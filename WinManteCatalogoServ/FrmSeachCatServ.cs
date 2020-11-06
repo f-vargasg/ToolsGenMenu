@@ -73,7 +73,7 @@ namespace WinManteCatalogoServ
             }
 
         }
-
+        // Esto es una prueba
         private void butSearch_Click(object sender, EventArgs e)
         {
             string searchValue = txtSearchBox.Text;
