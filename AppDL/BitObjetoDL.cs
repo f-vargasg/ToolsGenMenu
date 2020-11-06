@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
-using Utilities;
 
 namespace AppDL
 {
@@ -21,6 +17,8 @@ namespace AppDL
                 {
                     try
                     {
+                        DbParameter param = database.CreateParameter("return_value", DbType.Decimal, ParameterDirection.ReturnValue);
+                        command.Parameters.Add(param);
                         command.ExecuteNonQuery();
                         res = decimal.Parse(command.Parameters["return_value"].Value.ToString());
                         // string scrap = string.Format("Resultado de la suma {0}", res);
