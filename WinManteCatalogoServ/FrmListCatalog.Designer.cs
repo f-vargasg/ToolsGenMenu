@@ -33,6 +33,8 @@
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.butSeach = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
+            this.copiarTlStrpBut = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1.Items.Add(copiarTlStrpBut);
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -71,12 +73,23 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+            
+            this.copiarTlStrpBut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            // this.copiarTlStrpBut.Image = ((System.Drawing.Image)(resources.GetObject("copiarTlStrpBut.Image")));
+            this.copiarTlStrpBut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.copiarTlStrpBut.Name = "copiarTlStrpBut";
+            this.copiarTlStrpBut.Size = new System.Drawing.Size(24, 24);
+            this.copiarTlStrpBut.Text = "copiarTlStrpBut";
+            this.copiarTlStrpBut.ToolTipText = "Copiar";
+            
+
         }
 
         #endregion
 
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
+        protected System.Windows.Forms.ToolStripButton copiarTlStrpBut;
         private System.Windows.Forms.Button butSeach;
     }
 }

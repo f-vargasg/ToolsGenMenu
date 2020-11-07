@@ -79,6 +79,7 @@ namespace WinManteCatalogoServ
             string searchValue = txtSearchBox.Text;
             int columnIndex;
             int rowIndex = 0;
+            bool found = false;
 
             if (DgrData.Rows.Count > 0)
             {
@@ -88,13 +89,21 @@ namespace WinManteCatalogoServ
                 {
                     foreach (DataGridViewRow row in DgrData.Rows)
                     {
-                        if (row.Cells[columnIndex].Value.ToString().Equals(searchValue))
+                        if (row.Cells[columnIndex].Value != null)
                         {
-                            row.Selected = true;
-                            DgrData.CurrentCell = DgrData[columnIndex, rowIndex];
-                            break;
+                            if (row.Cells[columnIndex].Value.ToString().Equals(searchValue))
+                            {
+                                found = true;
+                                row.Selected = true;
+                                DgrData.CurrentCell = DgrData[columnIndex, rowIndex];
+                                break;
+                            }
                         }
                         ++rowIndex;
+                    }
+                    if (!found)
+                    {
+                        MessageBox.Show("Registro no encontrado!!!!");
                     }
                 }
                 catch (Exception exc)
