@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListCatalog));
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +76,7 @@
 
             
             this.copiarTlStrpBut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            // this.copiarTlStrpBut.Image = ((System.Drawing.Image)(resources.GetObject("copiarTlStrpBut.Image")));
+            this.copiarTlStrpBut.Image = ((System.Drawing.Image)(resources.GetObject("copiarTlStrpBut.Image")));
             this.copiarTlStrpBut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copiarTlStrpBut.Name = "copiarTlStrpBut";
             this.copiarTlStrpBut.Size = new System.Drawing.Size(24, 24);
