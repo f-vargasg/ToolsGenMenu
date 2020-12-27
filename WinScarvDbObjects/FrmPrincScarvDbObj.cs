@@ -46,7 +46,6 @@ namespace WinScarvDbObjects
             string pathGuarda = ConfigurationManager.AppSettings["pathGuarda"];
             string owner = string.Empty;
             string type = string.Empty;
-            string objectName = string.Empty;
             string fname = string.Empty;
             string ffname = string.Empty;
             int numLinea = 0;

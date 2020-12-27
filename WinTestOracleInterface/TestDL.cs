@@ -1,9 +1,7 @@
-﻿using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
+﻿using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Utilities;
 
 namespace WinTestOracleInterface
