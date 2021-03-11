@@ -13,19 +13,28 @@ namespace WinManteCatalogoServ
 {
     public partial class FrmPrincCatalogo : Form
     {
+        private CatalogoServBL catSrvBL;
         public FrmPrincCatalogo()
         {
             InitializeComponent();
+            InitMyComponents();
+        }
+
+        private void InitMyComponents()
+        {
+            catSrvBL = new CatalogoServBL();
         }
 
         private void tLstripButRefresh_Click(object sender, EventArgs e)
         {
             try
             {
-                CatalogoServBL catSrvBL = new CatalogoServBL();
+                // CatalogoServBL catSrvBL = new CatalogoServBL();
                 List<CatalogoServBE> lstCatSrv = catSrvBL.GetList();
-                var source = new BindingSource();
-                source.DataSource = lstCatSrv;
+                var source = new BindingSource
+                {
+                    DataSource = lstCatSrv
+                };
                 dgrData.AutoGenerateColumns = true;
                 dgrData.DataSource = source;
             }
@@ -68,7 +77,6 @@ namespace WinManteCatalogoServ
                     DialogResult dialogResult = MessageBox.Show(msg, "Confirmación de borrado", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        CatalogoServBL catSrvBL = new CatalogoServBL();
                         catSrvBL.Borrar(codServicioN);
                         MessageBox.Show("Registro Eliminado!!!!");
                         tLstripButRefresh_Click(sender, e);
