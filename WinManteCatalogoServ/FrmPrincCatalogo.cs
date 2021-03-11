@@ -29,7 +29,6 @@ namespace WinManteCatalogoServ
         {
             try
             {
-                // CatalogoServBL catSrvBL = new CatalogoServBL();
                 List<CatalogoServBE> lstCatSrv = catSrvBL.GetList();
                 var source = new BindingSource
                 {
