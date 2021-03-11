@@ -111,7 +111,7 @@
             this.tLstripButRefresh.Size = new System.Drawing.Size(24, 24);
             this.tLstripButRefresh.Text = "toolStripButton3";
             this.tLstripButRefresh.ToolTipText = "Refrescar";
-            this.tLstripButRefresh.Click += new System.EventHandler(this.tLstripButRefresh_Click);
+            this.tLstripButRefresh.Click += new System.EventHandler(this.TlstripButRefresh_Click);
             // 
             // tLstripButAdd
             // 
@@ -122,7 +122,7 @@
             this.tLstripButAdd.Size = new System.Drawing.Size(24, 24);
             this.tLstripButAdd.Text = "tStrAdd";
             this.tLstripButAdd.ToolTipText = "Añadir";
-            this.tLstripButAdd.Click += new System.EventHandler(this.tLstripButAdd_Click);
+            this.tLstripButAdd.Click += new System.EventHandler(this.TlstripButAdd_Click);
             // 
             // tLstripButVer
             // 
@@ -193,7 +193,7 @@
             this.tLstripButSalir.Size = new System.Drawing.Size(24, 24);
             this.tLstripButSalir.Text = "toolStripButton1";
             this.tLstripButSalir.ToolTipText = "Salir";
-            this.tLstripButSalir.Click += new System.EventHandler(this.tLstripButSalir_Click);
+            this.tLstripButSalir.Click += new System.EventHandler(this.TlstripButSalir_Click);
             // 
             // dgrData
             // 
@@ -219,7 +219,7 @@
             this.tLstripButDel.Size = new System.Drawing.Size(24, 24);
             this.tLstripButDel.Text = "toolStripButton1";
             this.tLstripButDel.ToolTipText = "Delete";
-            this.tLstripButDel.Click += new System.EventHandler(this.tLstripButDel_Click);
+            this.tLstripButDel.Click += new System.EventHandler(this.TlstripButDel_Click);
             // 
             // FrmPrincCatalogo
             // 

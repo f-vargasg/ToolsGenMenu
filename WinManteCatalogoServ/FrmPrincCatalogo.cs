@@ -25,7 +25,7 @@ namespace WinManteCatalogoServ
             catSrvBL = new CatalogoServBL();
         }
 
-        private void tLstripButRefresh_Click(object sender, EventArgs e)
+        private void TlstripButRefresh_Click(object sender, EventArgs e)
         {
             try
             {
@@ -45,12 +45,12 @@ namespace WinManteCatalogoServ
             }
         }
 
-        private void tLstripButSalir_Click(object sender, EventArgs e)
+        private void TlstripButSalir_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
-        private void tLstripButAdd_Click(object sender, EventArgs e)
+        private void TlstripButAdd_Click(object sender, EventArgs e)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace WinManteCatalogoServ
 
         }
 
-        private void tLstripButDel_Click(object sender, EventArgs e)
+        private void TlstripButDel_Click(object sender, EventArgs e)
         {
             int codServicioN;
             try
@@ -79,7 +79,7 @@ namespace WinManteCatalogoServ
                     {
                         catSrvBL.Borrar(codServicioN);
                         MessageBox.Show("Registro Eliminado!!!!");
-                        tLstripButRefresh_Click(sender, e);
+                        TlstripButRefresh_Click(sender, e);
                     }
                     else if (dialogResult == DialogResult.No)
                     {
