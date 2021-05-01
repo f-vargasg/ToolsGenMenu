@@ -2,13 +2,8 @@
 using AppBL;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace WinScarvDbObjects
@@ -51,7 +46,6 @@ namespace WinScarvDbObjects
             string pathGuarda = ConfigurationManager.AppSettings["pathGuarda"];
             string owner = string.Empty;
             string type = string.Empty;
-            string objectName = string.Empty;
             string fname = string.Empty;
             string ffname = string.Empty;
             int numLinea = 0;

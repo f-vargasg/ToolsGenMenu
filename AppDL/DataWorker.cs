@@ -1,4 +1,4 @@
-﻿using DatabaseUtil;
+﻿using DbConnFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace AppDL
         {
             try
             {
-                _database = DatabaseFactory.CreateDatabase(1);
+                _database = DatabaseFactory.CreateDatabase("Prueba4");
             }
             catch (Exception excep)
             {

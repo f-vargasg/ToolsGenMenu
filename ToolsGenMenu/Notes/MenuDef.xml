@@ -6,13 +6,9 @@
       <item id="item2" label= "Generador de Codigo"  class="WinXmlToSqlInvoker.FrnPrincGenCall" assemblyFile="WinGenCallSps.dll"  invoker=""/> 
       <item id="item3" label ="XML To Invoker" class="WinXmlToSqlInvoker.FrmPrincXmlInvoker" assemblyFile="WinXmlToSqlInvoker.dll" invoker=""/>
       <item id="item4" label ="Metadata Utiles" class="WinUtiles.FrmPrincipal" assemblyFile="WinUtiles.dll" invoker=""/>
-<<<<<<< .mine
       <item id="item5" label ="Catalogo de Servicios" class="WinManteCatalogoServ.FrmListCatalog" assemblyFile="WinManteCatalogoServ.dll" invoker=""/>
-||||||| .r184
       <item id="item5" label ="Metadata Utiles" class="WinManteCatalogoServ.FrmListCatalog" assemblyFile="WinManteCatalogoServ.dll" invoker=""/>
-=======
       <item id="item5" label ="Catalogo Servicios" class="WinManteCatalogoServ.FrmListCatalog" assemblyFile="WinManteCatalogoServ.dll" invoker=""/>
->>>>>>> .r260
     </menu> 
     </menu> 
  </menuDef> 

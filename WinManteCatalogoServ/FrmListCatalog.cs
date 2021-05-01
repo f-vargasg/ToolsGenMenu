@@ -1,13 +1,9 @@
-﻿using AppBL;
+﻿using AppBE;
+using AppBL;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using UiUtilities;
-using Utilities;
 
 namespace WinManteCatalogoServ
 {
@@ -32,9 +28,11 @@ namespace WinManteCatalogoServ
             try
             {
                 CatalogoServBL catSrvBL = new CatalogoServBL();
-                DataSet ds = catSrvBL.GetList();
-                dgrData.AutoGenerateColumns = true;
-                dgrData.DataSource = ds.Tables[0];
+                List<CatalogoServBE> lstCatSrv = catSrvBL.GetList();
+                var source = new BindingSource();
+                source.DataSource = lstCatSrv;
+                // dgrData.AutoGenerateColumns = true;
+                dgrData.DataSource = source;
             }
             catch (Exception ex)
             {

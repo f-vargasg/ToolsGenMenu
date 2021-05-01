@@ -1,31 +1,29 @@
 ﻿using AppBE;
-using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Utilities;
 
 namespace AppDL
 {
-    public class CatalogoServDL
+    public class CatalogoServDL : DataWorker
     {
-        OracleConnection conn;
         BitObjetoDL bitObjDL;
 
         public CatalogoServDL()
         {
-            this.conn = ConnGl.Instance.Conn;
             this.bitObjDL = new BitObjetoDL();
         }
 
         public void Insertar(CatalogoServBE pCatSrvBE)
         {
-           
-
             pCatSrvBE.CodRegistroN = bitObjDL.ObtenerCodRegistro();
+
+
 
             string wsql = "Insert into GE_AMBCATALOGO (" + Environment.NewLine +
                              "COD_SERVICIO_N, COD_TIPRETORNO_N,COD_OBJPROP_N,COD_TIPSERVICIO_N, " + Environment.NewLine +
@@ -41,7 +39,15 @@ namespace AppDL
                             MyStringUtils.entreComas(pCatSrvBE.DesInvocador) + ", " + pCatSrvBE.CodRegistroN.ToString() +
                             ", " + pCatSrvBE.CodEstadoN.ToString() + ", " + pCatSrvBE.IndLogueo.ToString() + ", " +
                             pCatSrvBE.IndPublico.ToString() + ", " + "'" + pCatSrvBE.DesEsquema + "')";
-            MyOracleUtils.execOracleStm(wsql, this.conn);
+
+            using (DbConnection connection = database.CreateOpenConnection())
+            {
+                using (DbCommand command = database.CreateCommand(wsql, connection))
+                {
+                    int numRows = command.ExecuteNonQuery();
+                }
+            }
+
 
             /*
              * GE_PAMBBITOBJETO.registrar(pcod_accionreg_n     => 1,
@@ -57,30 +63,36 @@ namespace AppDL
 
         public void Modificar(CatalogoServBE pCatSrvBE)
         {
-            string sql = string.Empty;
+            string wsql = string.Empty;
 
-            decimal codRegistroN = ObtenerCodRegistro(pCatSrvBE.CodServicioN);   
-                
-             sql =  "update GE_AMBCATALOGO SET " + Environment.NewLine +
-              "COD_TIPRETORNO_N     = " + Convert.ToString(pCatSrvBE.CodTipretornoN) + "," + Environment.NewLine +
-              "COD_OBJPROP_N        = " + Convert.ToString(pCatSrvBE.CodObjpropN) + "," + Environment.NewLine +
-              "COD_TIPSERVICIO_N    = " + Convert.ToString(pCatSrvBE.CodTipservicioN) + "," + Environment.NewLine +
-              "COD_ACCSERV_N        = " + Convert.ToString(pCatSrvBE.CodAccservN) + "," + Environment.NewLine +
-              "NOM_SERVICIO         = " + MyStringUtils.entreComas(pCatSrvBE.NomServicio) + "," + Environment.NewLine +
-              "IND_ATOMSERV_V       = " + MyStringUtils.entreComas(pCatSrvBE.IndAtomservV) + "," + Environment.NewLine +
-              "COD_MODULO_N         = " + Convert.ToString(pCatSrvBE.CodModuloN) + "," + Environment.NewLine +
-              "DES_SERVICIO         = " + MyStringUtils.entreComas(pCatSrvBE.DesServicio) + "," + Environment.NewLine +
-              "NUM_CACHE            = " + Convert.ToString(pCatSrvBE.NumCache) + "," + Environment.NewLine +
-              "DES_INVOCADOR        = " + MyStringUtils.entreComas(pCatSrvBE.DesInvocador) + "," + Environment.NewLine +
-              "COD_REGISTRO_N       = " + Convert.ToString(pCatSrvBE.CodRegistroN) + "," + Environment.NewLine +
-              "COD_ESTADO_N         = " + Convert.ToString(pCatSrvBE.CodEstadoN) + "," + Environment.NewLine +
-              "IND_LOGUEO           = " + Convert.ToString(pCatSrvBE.IndLogueo) + "," + Environment.NewLine +
-              "IND_PUBLICO          = " + Convert.ToString(pCatSrvBE.IndPublico) + "," + Environment.NewLine +
-              "DES_ESQUEMA          = " + MyStringUtils.entreComas(pCatSrvBE.DesEsquema)  + Environment.NewLine +
-              "WHERE COD_SERVICIO_N  = " + Convert.ToString(pCatSrvBE.CodServicioN);
-            MyOracleUtils.execOracleStm(sql, this.conn);
+            decimal codRegistroN = ObtenerCodRegistro(pCatSrvBE.CodServicioN);
+
+            wsql = "update GE_AMBCATALOGO SET " + Environment.NewLine +
+             "COD_TIPRETORNO_N     = " + Convert.ToString(pCatSrvBE.CodTipretornoN) + "," + Environment.NewLine +
+             "COD_OBJPROP_N        = " + Convert.ToString(pCatSrvBE.CodObjpropN) + "," + Environment.NewLine +
+             "COD_TIPSERVICIO_N    = " + Convert.ToString(pCatSrvBE.CodTipservicioN) + "," + Environment.NewLine +
+             "COD_ACCSERV_N        = " + Convert.ToString(pCatSrvBE.CodAccservN) + "," + Environment.NewLine +
+             "NOM_SERVICIO         = " + MyStringUtils.entreComas(pCatSrvBE.NomServicio) + "," + Environment.NewLine +
+             "IND_ATOMSERV_V       = " + MyStringUtils.entreComas(pCatSrvBE.IndAtomservV) + "," + Environment.NewLine +
+             "COD_MODULO_N         = " + Convert.ToString(pCatSrvBE.CodModuloN) + "," + Environment.NewLine +
+             "DES_SERVICIO         = " + MyStringUtils.entreComas(pCatSrvBE.DesServicio) + "," + Environment.NewLine +
+             "NUM_CACHE            = " + Convert.ToString(pCatSrvBE.NumCache) + "," + Environment.NewLine +
+             "DES_INVOCADOR        = " + MyStringUtils.entreComas(pCatSrvBE.DesInvocador) + "," + Environment.NewLine +
+             "COD_REGISTRO_N       = " + Convert.ToString(pCatSrvBE.CodRegistroN) + "," + Environment.NewLine +
+             "COD_ESTADO_N         = " + Convert.ToString(pCatSrvBE.CodEstadoN) + "," + Environment.NewLine +
+             "IND_LOGUEO           = " + Convert.ToString(pCatSrvBE.IndLogueo) + "," + Environment.NewLine +
+             "IND_PUBLICO          = " + Convert.ToString(pCatSrvBE.IndPublico) + "," + Environment.NewLine +
+             "DES_ESQUEMA          = " + MyStringUtils.entreComas(pCatSrvBE.DesEsquema) + Environment.NewLine +
+             "WHERE COD_SERVICIO_N  = " + Convert.ToString(pCatSrvBE.CodServicioN);
+            using (DbConnection connection = database.CreateOpenConnection())
+            {
+                using (DbCommand command = database.CreateCommand(wsql, connection))
+                {
+                    int numRows = command.ExecuteNonQuery();
+                }
+            }
             string usuario = Environment.UserName;
-            bitObjDL.Registrar(2, "GE_AMBCATALOGO", codRegistroN, usuario);
+            bitObjDL.Registrar(3, "GE_AMBCATALOGO", codRegistroN, usuario);
         }
 
         public decimal ObtenerCodRegistro(decimal pCodServicioN)
@@ -89,14 +101,22 @@ namespace AppDL
             string sql = "Select a.cod_registro_n " + Environment.NewLine +
                           "FROM GE_AMBCATALOGO a " + Environment.NewLine +
                           "WHERE A.COD_SERVICIO_N = " + Convert.ToString(pCodServicioN);
-            DataSet ds = null;
-            ds = MyOracleUtils.executeSqlStmDs(sql, this.conn);
-            foreach (DataRow dr in ds.Tables[0].Rows)
+
+
+            using (DbConnection connection = database.CreateOpenConnection())
             {
-                res = Convert.ToDecimal(dr["COD_REGISTRO_N"]);
+                using (DbCommand command = database.CreateCommand(sql, connection))
+                {
+                    using (IDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            res = Convert.ToDecimal(reader["COD_REGISTRO_N"]);
+                        }
+                    }
+                }
             }
             return res;
-
         }
 
         public void Borrar(decimal pCodServicioN)
@@ -105,33 +125,76 @@ namespace AppDL
 
             string wsql = "delete from ge_ambcatalogo " + Environment.NewLine +
                            "where cod_servicio_n = " + Convert.ToString(pCodServicioN);
-            MyOracleUtils.execOracleStm(wsql, this.conn);
+            using (DbConnection connection = database.CreateOpenConnection())
+            {
+                using (DbCommand command = database.CreateCommand(wsql, connection))
+                {
+                    int numRows = command.ExecuteNonQuery();
+                }
+            }
             string usuario = Environment.UserName;
-            bitObjDL.Registrar(3, "GE_AMBCATALOGO", codRegistroN, usuario);
+            bitObjDL.Registrar(4, "GE_AMBCATALOGO", codRegistroN, usuario);
         }
 
-        public DataSet GetList()
+        public List<CatalogoServBE> GetList()
         {
-            DataSet res = null;
             string sql = "Select a.* " + Environment.NewLine +
                          "from  Ge_ambcatalogo a " + Environment.NewLine +
                          "Order by a.cod_servicio_n desc";
-            res = MyOracleUtils.executeSqlStmDs(sql, this.conn);
+            List<CatalogoServBE> res = new List<CatalogoServBE>();
+
+            using (DbConnection connection = database.CreateOpenConnection())
+            {
+                using (DbCommand command = database.CreateCommand(sql, connection))
+                {
+                    using (IDataReader dr = command.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            CatalogoServBE catSrvBe = new CatalogoServBE();
+                            catSrvBe.CodServicioN = Convert.ToInt32(dr["COD_SERVICIO_N"]);
+                            catSrvBe.CodTipretornoN = Convert.ToInt32(dr["COD_TIPRETORNO_N"]);
+                            catSrvBe.CodObjpropN = Convert.ToInt32(dr["COD_OBJPROP_N"]);
+                            catSrvBe.CodTipservicioN = Convert.ToInt32(dr["COD_TIPSERVICIO_N"]);
+                            catSrvBe.CodAccservN = Convert.ToInt32(dr["COD_ACCSERV_N"]);
+                            catSrvBe.NomServicio = Convert.ToString(dr["NOM_SERVICIO"]);
+                            catSrvBe.IndAtomservV = Convert.ToString(dr["IND_ATOMSERV_V"]);
+                            catSrvBe.CodModuloN = Convert.ToInt32(dr["COD_MODULO_N"]);
+                            catSrvBe.DesServicio = Convert.ToString(dr["DES_SERVICIO"]);
+                            catSrvBe.NumCache = Convert.ToInt32(dr["NUM_CACHE"]);
+                            catSrvBe.DesInvocador = null;
+                            catSrvBe.CodRegistroN = Convert.ToDecimal(dr["COD_REGISTRO_N"]);
+                            catSrvBe.CodEstadoN = Convert.ToInt32(dr["COD_ESTADO_N"]);
+                            catSrvBe.IndLogueo = Convert.ToInt32(dr["IND_LOGUEO"]);
+                            catSrvBe.IndPublico = Convert.ToInt32(dr["IND_PUBLICO"]);
+                            catSrvBe.DesEsquema = null;
+                            res.Add(catSrvBe);
+                        }
+                    }
+                }
+            }
             return res;
         }
 
         public decimal NewCodServicio()
         {
             decimal res = 0;
-            string sql = "select nvl (max (a.cod_servicio_n), 0) + 1 as res " + Environment.NewLine +
+            string wSql = "select nvl (max (a.cod_servicio_n), 0) + 1 as res " + Environment.NewLine +
                           "from ge_ambcatalogo a";
 
-            DataSet ds = null;
-            ds = MyOracleUtils.executeSqlStmDs(sql, this.conn);
-
-            foreach (DataRow dr in ds.Tables[0].Rows)
+            using (DbConnection connection = database.CreateOpenConnection())
             {
-                res = Convert.ToDecimal(dr["res"]);
+                using (DbCommand command = database.CreateCommand(wSql, connection))
+                {
+                    using (IDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            res = Convert.ToDecimal(reader["res"]);
+
+                        }
+                    }
+                }
             }
 
             return res;
@@ -145,35 +208,40 @@ namespace AppDL
                " where a.cod_servicio_n = " + Convert.ToString(p);
             try
             {
-                DataSet ds = null;
-                ds = MyOracleUtils.executeSqlStmDs(sql, this.conn);
-
-                foreach (DataRow row in ds.Tables[0].Rows)
+                using (DbConnection connection = database.CreateOpenConnection())
                 {
-                    catalogoServBE.CodServicioN = Convert.ToInt32(row["COD_SERVICIO_N"]);
-                    catalogoServBE.CodTipretornoN = Convert.ToInt32(row["COD_TIPRETORNO_N"]);
-                    catalogoServBE.CodObjpropN = Convert.ToInt32(row["COD_OBJPROP_N"]);
-                    catalogoServBE.CodTipservicioN = Convert.ToInt32(row["COD_TIPSERVICIO_N"]);
-                    catalogoServBE.CodAccservN = Convert.ToInt32(row["COD_ACCSERV_N"]);
-                    catalogoServBE.NomServicio = Convert.ToString(row["NOM_SERVICIO"]);
-                    catalogoServBE.IndAtomservV = Convert.ToString(row["IND_ATOMSERV_V"]);
-                    catalogoServBE.CodModuloN = Convert.ToInt32(row["COD_MODULO_N"]);
-                    catalogoServBE.DesServicio = Convert.ToString(row["DES_SERVICIO"]);
-                    catalogoServBE.NumCache = Convert.ToInt32(row["NUM_CACHE"]);
-                    catalogoServBE.DesInvocador = Convert.ToString(row["DES_INVOCADOR"]);
-                    catalogoServBE.CodRegistroN = Convert.ToDecimal(row["COD_REGISTRO_N"]);
-                    catalogoServBE.CodEstadoN = Convert.ToInt32(row["COD_ESTADO_N"]);
-                    catalogoServBE.IndLogueo = Convert.ToInt32(row["IND_LOGUEO"]);
-                    catalogoServBE.IndPublico = Convert.ToInt32(row["IND_PUBLICO"]);
-                    catalogoServBE.DesEsquema = Convert.ToString(row["DES_ESQUEMA"]);
+                    using (DbCommand command = database.CreateCommand(sql, connection))
+                    {
+                        using (IDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                catalogoServBE.CodServicioN = Convert.ToInt32(reader["COD_SERVICIO_N"]);
+                                catalogoServBE.CodTipretornoN = Convert.ToInt32(reader["COD_TIPRETORNO_N"]);
+                                catalogoServBE.CodObjpropN = Convert.ToInt32(reader["COD_OBJPROP_N"]);
+                                catalogoServBE.CodTipservicioN = Convert.ToInt32(reader["COD_TIPSERVICIO_N"]);
+                                catalogoServBE.CodAccservN = Convert.ToInt32(reader["COD_ACCSERV_N"]);
+                                catalogoServBE.NomServicio = Convert.ToString(reader["NOM_SERVICIO"]);
+                                catalogoServBE.IndAtomservV = Convert.ToString(reader["IND_ATOMSERV_V"]);
+                                catalogoServBE.CodModuloN = Convert.ToInt32(reader["COD_MODULO_N"]);
+                                catalogoServBE.DesServicio = Convert.ToString(reader["DES_SERVICIO"]);
+                                catalogoServBE.NumCache = Convert.ToInt32(reader["NUM_CACHE"]);
+                                catalogoServBE.DesInvocador = Convert.ToString(reader["DES_INVOCADOR"]);
+                                catalogoServBE.CodRegistroN = Convert.ToDecimal(reader["COD_REGISTRO_N"]);
+                                catalogoServBE.CodEstadoN = Convert.ToInt32(reader["COD_ESTADO_N"]);
+                                catalogoServBE.IndLogueo = Convert.ToInt32(reader["IND_LOGUEO"]);
+                                catalogoServBE.IndPublico = Convert.ToInt32(reader["IND_PUBLICO"]);
+                                catalogoServBE.DesEsquema = Convert.ToString(reader["DES_ESQUEMA"]);
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
-           
         }
     }
 }

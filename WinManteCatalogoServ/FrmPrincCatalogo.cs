@@ -1,4 +1,5 @@
-﻿using AppBL;
+﻿using AppBE;
+using AppBL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,19 +13,29 @@ namespace WinManteCatalogoServ
 {
     public partial class FrmPrincCatalogo : Form
     {
+        private CatalogoServBL catSrvBL;
         public FrmPrincCatalogo()
         {
             InitializeComponent();
+            InitMyComponents();
         }
 
-        private void tLstripButRefresh_Click(object sender, EventArgs e)
+        private void InitMyComponents()
+        {
+            catSrvBL = new CatalogoServBL();
+        }
+
+        private void TlstripButRefresh_Click(object sender, EventArgs e)
         {
             try
             {
-                CatalogoServBL catSrvBL = new CatalogoServBL();
-                DataSet ds = catSrvBL.GetList();
+                List<CatalogoServBE> lstCatSrv = catSrvBL.GetList();
+                var source = new BindingSource
+                {
+                    DataSource = lstCatSrv
+                };
                 dgrData.AutoGenerateColumns = true;
-                dgrData.DataSource = ds.Tables[0];
+                dgrData.DataSource = source;
             }
             catch (Exception ex)
             {
@@ -33,12 +44,12 @@ namespace WinManteCatalogoServ
             }
         }
 
-        private void tLstripButSalir_Click(object sender, EventArgs e)
+        private void TlstripButSalir_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
-        private void tLstripButAdd_Click(object sender, EventArgs e)
+        private void TlstripButAdd_Click(object sender, EventArgs e)
         {
             try
             {
@@ -53,7 +64,7 @@ namespace WinManteCatalogoServ
 
         }
 
-        private void tLstripButDel_Click(object sender, EventArgs e)
+        private void TlstripButDel_Click(object sender, EventArgs e)
         {
             int codServicioN;
             try
@@ -65,10 +76,9 @@ namespace WinManteCatalogoServ
                     DialogResult dialogResult = MessageBox.Show(msg, "Confirmación de borrado", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        CatalogoServBL catSrvBL = new CatalogoServBL();
                         catSrvBL.Borrar(codServicioN);
                         MessageBox.Show("Registro Eliminado!!!!");
-                        tLstripButRefresh_Click(sender, e);
+                        TlstripButRefresh_Click(sender, e);
                     }
                     else if (dialogResult == DialogResult.No)
                     {

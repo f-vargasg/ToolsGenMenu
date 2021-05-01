@@ -38,9 +38,9 @@ namespace AppBL
             this.catServDL.Borrar(pCodServicioN);
         }
 
-        public DataSet GetList()
+        public List<CatalogoServBE> GetList()
         {
-            DataSet res = null;
+            List<CatalogoServBE> res = null;
             res = this.catServDL.GetList();
             return res;
         }
